@@ -1,0 +1,36 @@
+<div style="background-color: #fff; color: #6184D8;" class="navbar" role="navigation" style="margin-bottom:0; border-bottom: 1px solid">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar" style="background-color: #6184D8;"></span>
+          <span class="icon-bar" style="background-color: #6184D8;"></span>
+          <span class="icon-bar" style="background-color: #6184D8;"></span>
+        </button>
+        <a href="/" class="navbar-brand" style="color: #6184D8;" onmouseover="this.style.color='#000'" onmouseout="this.style.color='#6184D8'">BlogSpot</a>
+      </div>
+      <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="{{url_for('main.blogs')}}" style="color: #6184D8;" onmouseover="this.style.color='#000'" onmouseout="this.style.color='#6184D8'">Recent Posts</a></li>
+          <li><a href="/" style="color: #6184D8;" onmouseover="this.style.color='#000'" onmouseout="this.style.color='#6184D8'">Home</a></li>
+          <li><a href="{{url_for('main.cuisine')}}" style="color: #6184D8;" onmouseover="this.style.color='#000'" onmouseout="this.style.color='#6184D8'">Cuisine Discoveries</a></li>
+          <li><a href="{{url_for('main.voyage')}}" style="color: #6184D8;" onmouseover="this.style.color='#000'" onmouseout="this.style.color='#6184D8'">Voyage Adventures</a></li>
+          <li><a href="{{url_for('main.health')}}" style="color: #6184D8;" onmouseover="this.style.color='#000'" onmouseout="this.style.color='#6184D8'">Healthy Lifestyle</a></li>
+          <li><a href="{{url_for('main.empower')}}" style="color: #6184D8;" onmouseover="this.style.color='#000'" onmouseout="this.style.color='#6184D8'">Self Empowerment</a></li>
+        </ul>
+  
+        <ul class="nav navbar-nav navbar-right">
+          {% if current_user.is_authenticated %}
+          <li><a href="{{url_for('main.new_blog')}}" style="color: #6184D8;" onmouseover="this.style.color='#000'" onmouseout="this.style.color='#6184D8'">New Blog</a></li>
+          <li><a style="color: #6184D8;" onmouseover="this.style.color='#000'" onmouseout="this.style.color='#6184D8'" href="{{url_for('main.profile',uname=current_user.username)}}">Profile</a></li>
+          <li><a style="color: #6184D8;" onmouseover="this.style.color='#000'" onmouseout="this.style.color='#6184D8'" href="{{url_for('main.user_blogs',uname=current_user.username)}}">My Blogs</a></li>
+          <li><a style="color: #6184D8;" onmouseover="this.style.color='#000'" onmouseout="this.style.color='#6184D8'" href="{{url_for('auth.logout')}}">Logout</a></li>
+          {% else %}
+          <li><a style="color: #6184D8;" onmouseover="this.style.color='#000'" onmouseout="this.style.color='#6184D8'"  href="{{url_for('auth.login')}}">Admin</a></li>
+          <li><a style="color: #6184D8;" onmouseover="this.style.color='#000'" onmouseout="this.style.color='#6184D8'"  href="{{url_for('main.subscriber')}}">Subscribe to the mailing list</a></li>
+        </ul>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  
