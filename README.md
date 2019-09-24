@@ -59,7 +59,7 @@ Install dependancies that will create an environment for the app to run
 
 ### Prepare environment variables
 ```bash
-export DATABASE_URL='postgresql+psycopg2://username:password@localhost/pitchit'
+export DATABASE_URL='postgresql+psycopg2://username:password@localhost/blog'
 export SECRET_KEY='Your secret key'
 ```
 
@@ -75,6 +75,9 @@ In the same terminal type:
 `python3 manage.py server`
 
 Open the browser on `http://localhost:5000/`
+
+## Known Bugs
+The application has to start from the registration page so that the user can access the full features from the app
 
 ## Support and contact details
 Contact me for any comments, reviews or advice;
