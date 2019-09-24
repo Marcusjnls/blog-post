@@ -31,6 +31,8 @@ This is a web-app where users can come and share their ideas on how they can bes
 
 -   Finally is to add a section where users can **_Delete Their Accounts_** if they want to. Password confirs=mation will be required for this step to work
 
+## Application Screenshots
+
 ## Set up instructions
 
 ### Prerequiites
