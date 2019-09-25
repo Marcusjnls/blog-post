@@ -4,7 +4,7 @@ from app.models import User,Role
 from flask_migrate import Migrate, MigrateCommand
 from config import Config, config_options
 
-app = create_app('production')
+app = create_app()
 
 manager = Manager(app)
 manager.add_command('server',Server)
