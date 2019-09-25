@@ -6,33 +6,23 @@ from .forms import LoginForm,RegistrationForm
 from .. import db
 from ..email import mail_message
 
-user = [
-    {
-        'email':'moringa@school.com',
-        'password':'moringa'
-    }
-]
-
 
 @auth.route('/login', methods = ['GET','POST'])
 def login():
+    if current_user.is_authenticated:
+        return redirect(url_for('main.index'))
     form = LoginForm()
     if form.validate_on_submit():
         user = User.query.filter_by(email = form.email.data).first()
-    if form.email.data == 'moringa@school.com' and form.password.data == 'moringa':
-        login_user(user,form.remember.data)
-        return redirect(request.args.get('next') or url_for('main.index'))
-
-        flash('Invalid author or password')
+        if user is not None and user.verify_password(form.password.data):
+            login_user(user,form.remember.data)
+            return redirect(request.args.get('next') or url_for('main.index'))
+        flash('Invalid username or Password')
 
     title = 'BlogSpot Login'
     return render_template('auth/login.html', title = title, login_form = form)
 
 
-@auth.route('/logout')
-def logout():
-    logout_user()
-    return redirect(url_for('main.index'))
 
 
 @auth.route('/register', methods = ['GET','POST'])
@@ -47,3 +37,9 @@ def register():
         return redirect(url_for('auth.login'))
         title = 'New Account'
     return render_template('auth/register.html', registration_form = form)
+
+@auth.route('/logout')
+@login_required
+def logout():
+    logout_user()
+    return redirect(url_for('main.index'))
