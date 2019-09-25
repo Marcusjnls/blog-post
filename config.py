@@ -7,10 +7,9 @@ class Config:
     Describes the general configurations
     '''
     SECRET_KEY = os.environ.get('SECRET_KEY')
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://jean-louis:password@localhost/blog'
     UPLOADED_PHOTOS_DEST = 'app/static/photos'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
-
+    SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL")
     MAIL_SERVER = 'smtp.gmail.com'
     MAIL_PORT = 587
     MAIL_USE_TLS = True
